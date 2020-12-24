@@ -10,10 +10,15 @@ Instance variable? Method? A few minutes of thought can save you from wasting an
 <h2> Problem Solving Steps </h2>
 
 <ol>
-<li>Does the program have a user interface? : The game will be run from the command line.</li>
-<li> What inputs will the program have? : Two users who will each provide numbers which correspond to the placement of their tokens on the tic tac toe board. </li>
-<li> What's the desired output? : The desired output is a declaration of a winner between the two players or in the event of a tie, the declaration of a tie. </li>
-<li> Given the inputs, what are the steps necessary to return the desired output? : 
+<li>Does the program have a user interface?
+<ul><li>The game will be run from the command line.</li></ul></li>
+<li> What inputs will the program have?
+<ul><li>Two users who will each provide numbers which correspond to the 
+placement of their tokens on the tic tac toe board. </li></ul></li>
+<li> What's the desired output?
+<ul><li>The desired output is a declaration of a winner between the 
+two players or in the event of a tie, the declaration of a tie. </li></ul></li>
+<li> Given the inputs, what are the steps necessary to return the desired output?
     <ul>
     <li>Each user selection will need to be stored and their choices compared against the winning combinations. </li>
     <li>The number of available spaces on the board will need to be monitored so that 
