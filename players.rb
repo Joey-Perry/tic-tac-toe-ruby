@@ -1,9 +1,10 @@
 class Player
-    def initialize(name)
-        @name = name
-        @token = 'X'
+    attr_accessor :player_array, :active_player
+    attr_reader :token
+    def initialize(token, active_player)
+        @token = token
         @player_array = []
-        @active_player = false
+        @active_player
     end
 
 end

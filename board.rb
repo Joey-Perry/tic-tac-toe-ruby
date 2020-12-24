@@ -1,9 +1,10 @@
 class Board
 
-    attr_reader :board_array
+    attr_accessor :board_array, :winning_combinations
 
     def initialize
         @board_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        @winning_combinations = [[1,2,3], [4,5,6], [7,8,9], [1,5,9], [3,5,7], [1,4,7], [2,5,8], [3,6,9]]
     end
 
     def display_board
