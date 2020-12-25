@@ -3,33 +3,15 @@ require_relative 'players.rb'
 require 'pry'
 
 class Game 
-    attr_accessor :board, :player_1, :player_2
+    attr_accessor :board, :player_1, :player_2, :active_player
     def initialize
         @board = Board.new
-        @player_1 = Player.new('X', true)
-        @player_2 = Player.new('O', false)
-    end
-
-    def set_active_player
-        if player_1.active_player = true
-            player_1.active_player = false
-            player_2.active_player = true
-            player_1
-        else
-            player_2.active_player = false
-            player_1.active_player = true
-            player_2
-        end
+        @player_1 = Player.new('X')
+        @player_2 = Player.new('O')
+        @active_player = player_1
     end
 
     def winner?(active_player)
-        board.winning_combinations.each do |winning_combination|
-            if active_player.player_array.sort == winning_combination
-                break true
-            else
-                false
-            end
-        end
     end
 
     def board_full?
@@ -43,38 +25,51 @@ class Game
             board.board_array[player_selection - 1] = active_player.token
             # then add player_selection to player_array
             active_player.player_array << player_selection
-            #display board after selection
-            # board.display_board
             # check if the game is over (winner or board is full)
             if winner?(active_player) == true
                 puts "#{active_player} is the winner!"
             elsif board_full? == true
                 puts "Tie game!"
             else
-                run()
+                # reset active player
+                if active_player == player_1
+                    active_player = player_2
+                    inner_run(active_player)
+                elsif active_player == player_2
+                    active_player = player_1
+                    inner_run(active_player)
+                else
+                    puts "Something went wrong"
+                end
             end
         else
             puts "Error"
         end
     end
 
-    def run
-        #set active player
-        active_player = self.set_active_player
-        
-        board.display_board
+    def inner_run(active_player)
 
-        #obtain player selection
+        board.display_board
+        binding.pry
         if active_player == player_1
             puts "\n" "Player 1, make your selection: "
         else
             puts "\n" "Player 2, make your selection: "
         end
 
+        #obtain player selection
         player_selection = gets.chomp.to_i
 
+        #start game loop
         game_loop(player_selection, active_player)
     
     end
+
+    def run
+        #set active player
+        active_player == player_1
+        inner_run(active_player)
+    end
+
 end
     

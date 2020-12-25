@@ -1,10 +1,9 @@
 class Player
-    attr_accessor :player_array, :active_player
+    attr_accessor :player_array
     attr_reader :token
-    def initialize(token, active_player)
+    def initialize(token)
         @token = token
         @player_array = []
-        @active_player
     end
 
 end
