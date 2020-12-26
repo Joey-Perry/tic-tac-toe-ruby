@@ -1,5 +1,3 @@
-require_relative 'board.rb'
-require_relative 'players.rb'
 require_relative 'game.rb'
 
 puts "Welcome to Tic Tac Toe on Command Line with Ruby!"

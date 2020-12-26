@@ -1,9 +1,11 @@
 require_relative 'board.rb'
 require_relative 'players.rb'
+require_relative 'helper.rb'
 require 'pry'
 
 class Game 
     attr_accessor :board, :player_1, :player_2, :active_player
+    include Helper
     def initialize
         @board = Board.new
         @player_1 = Player.new('X')
@@ -12,6 +14,19 @@ class Game
     end
 
     def winner?(active_player)
+        counter = 0
+         board.winning_combinations.each do |winning_combination|
+            if contain?(active_player.player_array, winning_combination) == true
+                counter += 1
+            else
+                nil
+            end
+        end
+        if counter > 0
+            true
+        else
+            false
+        end
     end
 
     def board_full?
@@ -48,9 +63,7 @@ class Game
     end
 
     def inner_run(active_player)
-
         board.display_board
-        binding.pry
         if active_player == player_1
             puts "\n" "Player 1, make your selection: "
         else
